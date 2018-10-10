@@ -1,0 +1,59 @@
+<div>
+  <!-- Default panel contents -->
+  <mat-card>
+    <section class="mat-typography">
+      <h3>Crear Nuevo Cliente</h3>
+    </section>
+    <mat-divider></mat-divider>
+    <br><br>
+    <form [formGroup]="createForm" class="create-form">
+
+      <mat-form-field [hideRequiredMarker]="createForm.value.hideRequired" class="field-full-width" [floatLabel]="createForm.value.floatLabel">
+        <input matInput placeholder="Nombre" formControlName="Nombre" #Nombre required>
+      </mat-form-field>
+
+      <br><br>
+      <mat-form-field [hideRequiredMarker]="createForm.value.hideRequired" class="field-full-width">
+        <input matInput placeholder="Apellido" formControlName="Apellido" #Apellido required>
+      </mat-form-field>
+
+      <br><br>
+      <mat-form-field [hideRequiredMarker]="createForm.value.hideRequired" [floatLabel]="createForm.value.floatLabel">
+        <mat-select placeholder="Seleccione Sexo" formControlName="Sexo" #Sexo required>
+          <mat-option value="Masculino"> Masculino</mat-option>
+          <mat-option value="Femenino"> Femenino</mat-option>
+        </mat-select>
+      </mat-form-field>
+
+      <br><br>
+      
+      <mat-form-field>
+          <input matInput [matDatepickerFilter]="myFilter" [matDatepicker]="picker" placeholder="Fecha de Nacimiento" formControlName="FechaRegistro" #FechaRegistro required>
+          <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+          <mat-datepicker #picker></mat-datepicker>
+        </mat-form-field>
+      
+      <br><br>
+      <mat-form-field [hideRequiredMarker]="createForm.value.hideRequired" class="field-full-width" [floatLabel]="createForm.value.floatLabel">
+        <input matInput placeholder="Email" formControlName="Correo" #Correo required>
+      </mat-form-field>
+
+      <br><br>
+      <mat-form-field [hideRequiredMarker]="createForm.value.hideRequired" class="field-full-width" [floatLabel]="createForm.value.floatLabel">
+        <input matInput placeholder="Teléfono" formControlName="Telefono" #Telefono required>
+      </mat-form-field>
+
+      <br><br>
+      <button mat-raised-button type="button" routerLink="/list">
+        <mat-icon>reply</mat-icon> Volver
+      </button>&nbsp;
+
+      <button mat-raised-button color="primary" type="submit" (click)="addCliente(Nombre.value, Apellido.value, 
+      Sexo.value, FechaRegistro.value, Correo.value, Telefono.value)"
+        [disabled]="createForm.pristine || createForm.invalid">
+        <mat-icon>save_alt</mat-icon> Guardar
+      </button>
+      <br><br>
+    </form>
+  </mat-card>
+</div>

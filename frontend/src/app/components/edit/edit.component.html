@@ -1,0 +1,55 @@
+<div>
+  <mat-card>
+    <!-- Default panel contents -->
+    <section class="mat-typography">
+      <h3>Editar Cliente</h3>
+    </section>
+    <mat-divider></mat-divider>
+
+    <form [formGroup]="updateForm" class="edit-form">
+
+      <mat-form-field class="field-full-width" appearance="standard">
+        <input matInput placeholder="Nombre" formControlName="Nombre" #Nombre>
+      </mat-form-field>
+
+      <mat-form-field class="field-full-width" appearance="standard">
+        <input matInput placeholder="Apellido" formControlName="Apellido" #Apellido>
+      </mat-form-field>
+
+      <mat-form-field appearance="standard">
+        <mat-select placeholder="Sexo" formControlName="Sexo" #Sexo>
+          <mat-option value="Masculino"> Masculino</mat-option>
+          <mat-option value="Femenino"> Femenino</mat-option>
+        </mat-select>
+      </mat-form-field>
+      
+      <br><br>
+
+      <mat-form-field appearance="standard">
+        <input matInput [matDatepicker]="FechaRegistrada" placeholder="Fecha Nacimiento" [formControl]="FechaRegistrada">
+        <mat-datepicker-toggle matSuffix [for]="FechaRegistrada"></mat-datepicker-toggle>
+        <mat-datepicker #FechaRegistrada></mat-datepicker>
+      </mat-form-field>
+
+
+      <mat-form-field class="field-full-width" appearance="standard">
+        <input matInput placeholder="Correo" formControlName="Correo" #Correo> 
+      </mat-form-field>
+
+      <mat-form-field class="field-full-width" appearance="standard">
+        <input matInput placeholder="Telefono" formControlName="Telefono" #Telefono>
+      </mat-form-field>
+      <br><br>
+
+      <button mat-raised-button type="button" routerLink="/list">
+        <mat-icon>reply</mat-icon> Volver
+      </button>&nbsp;
+
+      <button mat-raised-button color="primary" type="submit" (click)="updateCliente(Nombre.value, Apellido.value, 
+      Sexo.value, FechaRegistrada.value, Correo.value, Telefono.value)" [disabled]="updateForm.pristine || updateForm.invalid">
+        <mat-icon>save_alt</mat-icon> Guardar
+      </button>
+
+    </form>
+  </mat-card>
+</div>
